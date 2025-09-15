@@ -5,7 +5,7 @@ Ovaj projekt se fokusira na analizu Ethereum blockchain transakcija kako bi se o
 ## Sadržaj projekta
 
 - `ETH_tx_analysis.R` - R skripta koja sadrži sav kod za analizu i vizualizaciju.
-- `ETH_tx_analysis.pdf` - Projektna dokumentacija koji opisuje metodologiju, rezultate i zaključke analize.
+- `ETH_tx_analysis.pdf` - Projektna dokumentacija koja opisuje metodologiju, rezultate i zaključke analize.
 - `.env` - Datoteka koja sadrži API ključ (nije uključena u repozitorij i dodana je u `.gitignore`).
 
 ## Upute za korištenje
