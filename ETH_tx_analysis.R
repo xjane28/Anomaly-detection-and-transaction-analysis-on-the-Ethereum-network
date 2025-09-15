@@ -718,8 +718,6 @@ boxplot(ERC20.uniq.sent.addr ~ FLAG, data = data,
 
 
 #----------------------------------------------------------------------
-# BENFORD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-#----------------------------------------------------------------------
 # VARIJABLA total.Ether.sent
 
 
@@ -782,11 +780,6 @@ barplot(
 #VARIJABLA total.ether.balance
 
 
-# Funkcija za izvlačenje vodeće znamenke
-get_first_digit <- function(x) {
-  x <- x[x > 0]
-  as.numeric(substr(gsub("^0+|\\.", "", x), 1, 1))
-}
 
 # Razdvajanje po grupama
 vals_legit <- total.ether.balance[FLAG == 0]
@@ -834,11 +827,6 @@ barplot(
 #------------------------------------------------------------------
 # VARIJABLA avg.val.received
 
-# Funkcija za izvlačenje vodeće znamenke
-get_first_digit <- function(x) {
-  x <- x[x > 0]
-  as.numeric(substr(gsub("^0+|\\.", "", x), 1, 1))
-}
 
 # Razdvajanje po grupama
 vals_legit <- avg.val.received[FLAG == 0]
@@ -972,7 +960,7 @@ expected_col <- "benford.dist.freq"
 benford_table$actual_pct   <- benford_table[[actual_col]]   * 100
 benford_table$expected_pct <- benford_table[[expected_col]] * 100
 
-# --- 7. Napredna vizualizacija: stvarno vs. Benford ---
+# --- 7. vizualizacija: stvarno vs. Benford ---
 ggplot(benford_table, aes(x = factor(digits))) +
   geom_col(aes(y = actual_pct, fill = "Stvarno"), alpha = 0.7) +
   geom_line(aes(y = expected_pct, group = 1, colour = "Benford"), linewidth = 1.2) +
@@ -1099,7 +1087,7 @@ library(purrr)
 
 # --- 1. Adresa MEVBot i API ključ ---
 address <- "0x5f65f7b609678448494de4c87521cdf6cef1e932"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
+api_key <- Sys.getenv("API_KEY")
 
 # --- 2. Funkcija za dohvat jedne stranice podataka ---
 get_erc20_transfers <- function(address, api_key, page = 1, offset = 1000) {
@@ -1219,7 +1207,6 @@ as_datetime(1588965648)
 
 # --- Parametri ---
 address <- "0x3f5CE5FBFe3E9af3971dD833D26BA9b5C936f0bE"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBFC"
 
 # --- Funkcija za dohvat s retry mehanizmom ---
 get_transactions <- function(address, api_key, page = 1, offset = 1000, max_attempts = 3) {
@@ -1356,7 +1343,6 @@ dev.off()
 
 # --- Parametri ---
 address <- "0x503828976D22510aad0201ac7EC88293211D23Da"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBFC"
 
 # --- Funkcija za dohvat s retry mehanizmom ---
 get_transactions <- function(address, api_key, page = 1, offset = 1000, max_attempts = 3) {
@@ -1518,7 +1504,6 @@ cat("Podaci od", min(df_all$datetime), "do", max(df_all$datetime), "\n")
 
 # --- Parametri ---
 address <- "0xB3764761E297D6f121e79C32A65829Cd1dDb4D32"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBFC"
 
 # --- Funkcija za dohvat s retry mehanizmom ---
 get_transactions <- function(address, api_key, page = 1, offset = 1000, max_attempts = 3) {
@@ -1656,7 +1641,6 @@ cat("Podaci od", min(df_all$datetime), "do", max(df_all$datetime), "\n")
 
 # --- Parametri ---
 address <- "0x281055afc982d96fab65b3a49cac8b878184cb16"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBFC"
 
 # --- Funkcija za dohvat s retry mehanizmom ---
 get_transactions <- function(address, api_key, page = 1, offset = 1000, max_attempts = 3) {
@@ -1791,7 +1775,6 @@ cat("Podaci od", min(df_all$datetime), "do", max(df_all$datetime), "\n")
 
 
 address <- "0x281055afc982d96fab65b3a49cac8b878184cb16"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
 
 # --- 2. Funkcija za dohvat jedne stranice podataka ---
 get_erc20_transfers <- function(address, api_key, page = 1, offset = 1000) {
@@ -1906,7 +1889,6 @@ cat("Podaci pokrivaju razdoblje od", start_date, "do", end_date, "\n")
 
 
 address <- "0x281055afc982d96fab65b3a49cac8b878184cb16"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
 
 # --- Funkcija za dohvat normalnih (ETH) transakcija ---
 get_eth_transactions <- function(address, api_key, page = 1, offset = 10000) {
@@ -2023,7 +2005,6 @@ cat("Podaci pokrivaju razdoblje od", as_datetime(start_date), "do", as_datetime(
 
 
 address <- "0xd551234ae421e3bcba99a0da6d736074f22192ff"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
 
 # --- Funkcija za dohvat normalnih (ETH) transakcija ---
 get_eth_transactions <- function(address, api_key, page = 1, offset = 10000) {
@@ -2143,7 +2124,6 @@ cat("Podaci pokrivaju razdoblje od", as_datetime(start_date), "do", as_datetime(
 
 # --- Parametri ---
 address <- "0x281055afc982d96fab65b3a49cac8b878184cb16"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBFC"
 
 # --- Funkcija za dohvat s retry mehanizmom ---
 get_transactions <- function(address, api_key, page = 1, offset = 1000, max_attempts = 3) {
@@ -2277,7 +2257,7 @@ cat("Podaci od", min(df_all$datetime), "do", max(df_all$datetime), "\n")
 
 
 address <- "0x281055afc982d96fab65b3a49cac8b878184cb16"
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
+api_key <- Sys.getenv("API_KEY")
 
 # --- Funkcija za dohvat normalnih (ETH) transakcija ---
 get_eth_transactions <- function(address, api_key, page = 1, offset = 10000) {
@@ -2388,8 +2368,6 @@ cat("Podaci pokrivaju razdoblje od", as_datetime(start_date), "do", as_datetime(
 
 
 
-
-setwd("/Users/jana/Documents/statprakt_projekt")
   
   #----------------------------------- automatizacija procesa - value varijabla
   
@@ -2428,7 +2406,7 @@ get_transactions <- function(address, api_key, startblock = 0, endblock = 999999
             user_agent("Mozilla/5.0 (BenfordAnalyzer/1.0; +https://yourwebsite.com)")
         )
       }, error = function(e) {
-        cat("⚠️ Pokušaj", attempt, "nije uspio:", e$message, "\n")
+        cat(" Pokušaj", attempt, "nije uspio:", e$message, "\n")
         return(NULL)
       })
       
@@ -2473,7 +2451,7 @@ analyze_addresses <- function(csv_path, api_key) {
     df <- get_transactions(address, api_key, startblock, endblock)
     
     if (is.null(df)) {
-      cat("⚠️ Nema podataka za adresu:", address, "\n")
+      cat(" Nema podataka za adresu:", address, "\n")
       next
     }
     
@@ -2521,7 +2499,7 @@ analyze_addresses <- function(csv_path, api_key) {
 }
 
 # --- Poziv i spremanje rezultata ---
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"  
+api_key <- Sys.getenv("API_KEY")
 result_df <- analyze_addresses("transaction_dataset.csv", api_key)
 
 # Spremi rezultate u CSV
@@ -2726,7 +2704,7 @@ analyze_addresses <- function(csv_path, api_key) {
     df <- get_transactions(address, api_key, startblock, endblock)
     
     if (is.null(df)) {
-      cat("⚠️ Nema podataka za adresu:", address, "\n")
+      cat(" Nema podataka za adresu:", address, "\n")
       next
     }
     
@@ -2739,7 +2717,7 @@ analyze_addresses <- function(csv_path, api_key) {
       filter(token_value > 0)
     
     if (nrow(df_clean) == 0) {
-      cat("⚠️ Nema transakcija s token_value > 0 za", address, "\n")
+      cat(" Nema transakcija s token_value > 0 za", address, "\n")
       next
     }
     
@@ -2774,7 +2752,7 @@ analyze_addresses <- function(csv_path, api_key) {
 }
 
 # --- Poziv i spremanje ---
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
+api_key <- Sys.getenv("API_KEY")
 result_df <- analyze_addresses("transaction_dataset.csv", api_key)
 
 
@@ -2878,7 +2856,7 @@ analyze_addresses_gas <- function(csv_path, api_key) {
     df <- get_transactions(address, api_key, startblock, endblock)
     
     if (is.null(df)) {
-      cat("⚠️ Nema podataka za adresu:", address, "\n")
+      cat(" Nema podataka za adresu:", address, "\n")
       next
     }
     
@@ -2893,7 +2871,7 @@ analyze_addresses_gas <- function(csv_path, api_key) {
       filter(!is.na(totalGasCost), totalGasCost > 0)
     
     if (nrow(df_clean) == 0) {
-      cat("⚠️ Nema transakcija s totalGasCost > 0 za", address, "\n")
+      cat(" Nema transakcija s totalGasCost > 0 za", address, "\n")
       next
     }
     
@@ -2928,7 +2906,7 @@ analyze_addresses_gas <- function(csv_path, api_key) {
 }
 
 # --- Poziv i spremanje ---
-api_key <- "QWYM4GWT88FBK59RFU1HENBVQVD6REQJBF"
+api_key <- Sys.getenv("API_KEY")
 result_gas_df <- analyze_addresses_gas("transaction_dataset.csv", api_key)
 
 # Spremi rezultate
@@ -3011,7 +2989,6 @@ plot(benford_test) #aut3
 
 
 
-# --- 0. Instaliraj i učitaj potrebne pakete ---
 if (!require(keras)) install.packages("keras")
 if (!require(tidyverse)) install.packages("tidyverse")
 
@@ -3020,13 +2997,9 @@ library(tidyverse)
 
 # --- 1. Pripremi podatke ---
 
-# Pretpostavimo da imaš data frame 'data' s kolonama:
 # date (datum), value_eth (npr. dnevni zbroj vrijednosti transakcija)
 
-# Primjer učitavanja podataka (zamijeni s tvojim podacima)
-# data <- read_csv("tvoje_podatke.csv")
 
-# Za primjer generirajmo sintetičke podatke:
 set.seed(123)
 dates <- seq.Date(from=as.Date("2025-07-01"), to=as.Date("2025-07-31"), by="day")
 values <- rnorm(length(dates), mean=100, sd=10)
@@ -3103,7 +3076,6 @@ legend("topright", legend=c("Stvarne vrijednosti", "Predviđene vrijednosti", "A
 
 
 
-??plot.benford
 
 
 
