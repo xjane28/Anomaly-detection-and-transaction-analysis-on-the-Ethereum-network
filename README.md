@@ -1,0 +1,2 @@
+# Anomaly-detection-and-transaction-analysis-on-the-Ethereum-network
+This project focuses on analyzing Ethereum blockchain transaction data to uncover patterns and trends. Using R programming language, the project fetches transaction data through an API, processes it, and generates visual insights. The accompanying seminar report details the methodology, findings, and interpretations of the analysis.
