@@ -1,5 +1,3 @@
-setwd("/Users/jana/Documents/statprakt_projekt")
-
 data <- read.csv("transaction_dataset.csv", stringsAsFactors = FALSE)
 
 attach(data)
@@ -1470,7 +1468,7 @@ cat("Chi-squared test p-value:", chisq_test$p.value, "\n")
 
 cat("Podaci od", min(df_all$datetime), "do", max(df_all$datetime), "\n")
 
-#promatran premalen interval - samo 4 transakcije pa preskačem u analizi
+#promatran premalen interval 
 
 
 
@@ -2752,7 +2750,6 @@ analyze_addresses <- function(csv_path, api_key) {
 }
 
 # --- Poziv i spremanje ---
-api_key <- Sys.getenv("API_KEY")
 result_df <- analyze_addresses("transaction_dataset.csv", api_key)
 
 
@@ -2906,7 +2903,6 @@ analyze_addresses_gas <- function(csv_path, api_key) {
 }
 
 # --- Poziv i spremanje ---
-api_key <- Sys.getenv("API_KEY")
 result_gas_df <- analyze_addresses_gas("transaction_dataset.csv", api_key)
 
 # Spremi rezultate
